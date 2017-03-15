@@ -1,0 +1,65 @@
+<body>
+  <div class="container">
+    <header>
+      <h1>Two Tutorial Meteor</h1>
+    </header>
+        {{todos}}
+  </div>
+</body>
+
+<!-- Main Template-->
+<template name="main">
+    <h1>Todos</h1>
+    {{> yield}}
+    <hr />
+    <p>Copyright &copy; Todos, 2014-2015.</p>
+</template>
+<!-- ________________ -->
+
+<!-- Home -->
+<template name="home">
+    <p>Welcome to the Todos application.</p>
+</template>
+<!-- _________________ -->
+
+
+<!--each all TODOS "Main Template"-->
+<template name="todos">
+
+      {{> addTodo}}
+      <ul>
+      {{#each todo}}
+          {{> todoItem}}
+      {{/each}}
+      </ul>
+      {{> todosCount}}
+</template>
+<!-- ______________ -->
+
+
+<!-- List Name Todo-->
+<template name="todoItem">
+    <li class = "{{checked}}">
+        <input type="checkbox" {{checked}}>
+        <input type="text" value="{{name}}" name="todoItemInput">
+        [<a href="#" class="delete-todo">Delete</a>]
+    </li>
+</template>
+<!-- ______________ -->
+
+<!--Input for add new Todo-->
+<template name="addTodo">
+    <form>
+        Create a task:
+        <input type="text" placeholder="Type a task here..." name="todoName">
+    </form>
+</template>
+<!-- ______________ -->
+
+<!-- List Name todosCount-->
+<template name="todosCount">
+{{#if totalTodos}}
+    <p>You have completed {{completedTodos}} out of {{totalTodos}} tasks.</p>
+{{/if}}
+</template>
+<!-- ______________ -->
